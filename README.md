@@ -1,5 +1,7 @@
 # licenser - adds copyright notice to all your source files
 
+[![Build Status](https://travis-ci.org/emicklei/licenser.png)](https://travis-ci.org/emicklei/licenser)
+
     go get github.com/emicklei/licenser
 
 ## Help
@@ -13,6 +15,10 @@
             source token that indicates where the actual source will start
     -t string
             source token that indicates where the actual source will start (default "package")
+
+## Example
+
+    licenser -d -e ".go" -f LICENSE -t "package" .
 
 ## Example Apache v2
 
