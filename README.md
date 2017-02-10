@@ -1,14 +1,18 @@
-# licenser - adds missing copyright notice to all your source files
+# licenser - adds copyright notice to all your source files
 
-## Go
-Adds your notice before the **package** statement using // as comment indicator.
+    go get github.com/emicklei/licenser
 
-## Usage
-    licenser -d -go notice.txt
+## Help
 
-    -d : perform a dry run, see what files would be changed
+    Usage: licenser [flags] [path...]
 
-    -go : files with extension .go will use this copyright notice
+    -d	dry run, see what would change
+    -e string
+            file extension for which the copyright notice must be added (default ".go")
+    -f string
+            source token that indicates where the actual source will start
+    -t string
+            source token that indicates where the actual source will start (default "package")
 
 ## Example Apache v2
 
