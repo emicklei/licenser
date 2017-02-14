@@ -31,9 +31,10 @@ import (
 
 var (
 	oDryRun         = flag.Bool("d", false, "dry run, see what would change")
-	oExtension      = flag.String("e", ".go", "file extension for which the copyright notice must be added")
 	oNoticeFilename = flag.String("f", "", "filename that contains the copyright notice")
 	oStarStyle      = flag.Bool("s", false, "if true then use the /* ... */ method for writing the notice else use //")
+	oExtension      = flag.String("e", ".go", "file extension for which the copyright notice must be added")
+	oRecurseDirs    = flag.Bool("r", false, "recursively search for files")
 )
 
 var (
@@ -60,9 +61,27 @@ func main() {
 
 	// find and update all files
 	waiters = new(sync.WaitGroup)
-	err = filepath.Walk(flag.Args()[0], visit)
-	if err != nil {
-		log.Fatalln(err)
+	if *oRecurseDirs {
+		err = filepath.Walk(flag.Args()[0], visit)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	} else {
+		path := flag.Args()[0]
+		dir, err := os.Open(path)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		list, err := dir.Readdir(0)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		for _, each := range list {
+			if err := visit(filepath.Join(path, each.Name()), each, nil); err != nil {
+				log.Fatalln(err)
+			}
+		}
 	}
 	waiters.Wait()
 }

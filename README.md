@@ -13,8 +13,8 @@
             file extension for which the copyright notice must be added (default ".go")
     -f string
             filename that contains the copyright notice
-    -s bool
-            if true then use the /* ... */ method for writing the notice else use // (default false)
+    -r	recursively search for files (default true)
+    -s	if true then use the /* ... */ method for writing the notice else use //
 
 ## Example
 
