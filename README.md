@@ -18,7 +18,7 @@
 
 ## Example
 
-    licenser -d -e ".go" -f LICENSE -t "package" .
+    licenser -d -e ".go" -f LICENSE .
 
 ## Example Apache v2
 
