@@ -12,9 +12,9 @@
     -e string
             file extension for which the copyright notice must be added (default ".go")
     -f string
-            source token that indicates where the actual source will start
-    -t string
-            source token that indicates where the actual source will start (default "package")
+            filename that contains the copyright notice
+    -s bool
+            if true then use the /* ... */ method for writing the notice else use // (default false)
 
 ## Example
 
