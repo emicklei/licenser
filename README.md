@@ -8,17 +8,17 @@
 
     Usage: licenser [flags] [path...]
 
-    -d	dry run, see what would change
+    -d	dry run, see which files would change
     -e string
             file extension for which the copyright notice must be added (default ".go")
     -f string
             filename that contains the copyright notice
-    -r	recursively search for files (default true)
+    -r	recursively search for files
     -s	if true then use the /* ... */ method for writing the notice else use //
 
 ## Example
 
-    licenser -d -e ".go" -f LICENSE .
+    licenser -d -r -s -e ".java" -f LICENSE .
 
 ## Example Apache v2
 
