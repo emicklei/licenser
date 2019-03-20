@@ -138,7 +138,10 @@ func writeNoticeOn(w io.Writer) error {
 	}
 	scanner := bufio.NewScanner(strings.NewReader(notice))
 	for scanner.Scan() {
-		io.WriteString(w, "// ")
+		io.WriteString(w, "//")
+                if (len(scanner.Text()) != 0) {
+                        io.WriteString(w, " ")
+                }
 		io.WriteString(w, scanner.Text())
 		io.WriteString(w, "\n")
 	}
