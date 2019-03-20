@@ -47,7 +47,8 @@ func main() {
 	pwd, _ = os.Getwd()
 	flag.Parse()
 	if len(flag.Args()) == 0 {
-		fmt.Println("Usage: licenser [flags] [path...]", "\n")
+		fmt.Println("Usage: licenser [flags] [path...]")
+		fmt.Println()
 		flag.PrintDefaults()
 		return
 	}
@@ -139,9 +140,9 @@ func writeNoticeOn(w io.Writer) error {
 	scanner := bufio.NewScanner(strings.NewReader(notice))
 	for scanner.Scan() {
 		io.WriteString(w, "//")
-                if (len(scanner.Text()) != 0) {
-                        io.WriteString(w, " ")
-                }
+		if len(scanner.Text()) != 0 {
+			io.WriteString(w, " ")
+		}
 		io.WriteString(w, scanner.Text())
 		io.WriteString(w, "\n")
 	}
